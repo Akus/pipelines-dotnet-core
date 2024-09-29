@@ -21,8 +21,16 @@ steps:
     msBuildVersion: '9.0.0.100868'
     projectKey: 'sonar:Akos_Azure'
     projectName: 'Akos_Azure'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (ed55859d-6439-42f0-be22-92f432bd587a)'
+    command: 'build'
+
+    
 - task: SonarQubeAnalyze@6
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
